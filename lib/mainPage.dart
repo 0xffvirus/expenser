@@ -1,3 +1,4 @@
+import 'package:expenser/widget/log.dart';
 import 'package:flutter/material.dart';
 import 'package:expenser/auth.dart';
 import 'package:expenser/widget/DoTile.dart';
@@ -5,6 +6,7 @@ import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/intl.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -22,6 +24,10 @@ class _MainPageState extends State<MainPage> {
       db.toDoList[index][1] = !db.toDoList[index][1];
     });
     db.updateData();
+  }
+
+  void saveInfoExchange(double value, bool increase, String time) {
+    db.moneyExchange.add([value, increase, time]);
   }
 
   // save new task
@@ -90,6 +96,7 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
+  var revermoney = DataAuth().moneyExchange.reversed.toList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,6 +130,7 @@ class _MainPageState extends State<MainPage> {
               backgroundColor: const Color(0xffFAFAFA),
             ),
             body: ListView.builder(
+              physics: BouncingScrollPhysics(),
               itemCount: db.toDoList.length,
               itemBuilder: (context, index) {
                 return ToDoTile(
@@ -170,16 +178,29 @@ class _MainPageState extends State<MainPage> {
                     children: [
                       Column(
                         children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Padding(
+                              IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      selectedIndex = 3;
+                                    });
+                                    pageController.animateToPage(selectedIndex,
+                                        duration:
+                                            const Duration(milliseconds: 400),
+                                        curve: Curves.easeOutQuad);
+                                  },
+                                  icon: Icon(
+                                    Icons.info,
+                                    color: Color.fromARGB(157, 250, 250, 250),
+                                  )),
+                              const Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 15, vertical: 10),
                                 child: Text(
                                   "الرصيد الحالي",
                                   textAlign: TextAlign.end,
-                                  textDirection: TextDirection.rtl,
                                   style: TextStyle(
                                       fontSize: 19,
                                       color: Color.fromARGB(157, 250, 250, 250),
@@ -289,6 +310,8 @@ class _MainPageState extends State<MainPage> {
                           setState(() {
                             db.currentbalance -= int.parse(value![0]);
                             db.updateData();
+                            saveInfoExchange(double.parse(value[0]), false,
+                                DateFormat.yMMMMd().format(DateTime.now()));
                           });
                         });
                       });
@@ -360,6 +383,8 @@ class _MainPageState extends State<MainPage> {
                           setState(() {
                             db.currentbalance += int.parse(value![0]);
                             db.updateData();
+                            saveInfoExchange(double.parse(value[0]), true,
+                                DateFormat.yMMMMd().format(DateTime.now()));
                           });
                         });
                       });
@@ -447,6 +472,57 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
           ),
+          Scaffold(
+              appBar: AppBar(
+                leading: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        selectedIndex = 1;
+                      });
+                      pageController.animateToPage(selectedIndex,
+                          duration: const Duration(milliseconds: 400),
+                          curve: Curves.easeOutQuad);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.black,
+                    )),
+                centerTitle: false,
+                title: const Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 5, top: 10),
+                    child: Text(
+                      "المعاملات",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Rudwa"),
+                    ),
+                  ),
+                ),
+                elevation: 0,
+                backgroundColor: const Color(0xffFAFAFA),
+              ),
+              body: ListView.builder(
+                controller: ScrollController(),
+                physics: BouncingScrollPhysics(),
+                itemCount: db.moneyExchange.length,
+                itemBuilder: (context, index) {
+                  return InfoTale(
+                    amount:
+                        db.moneyExchange[(db.moneyExchange.length - 1) - index]
+                            [0],
+                    increase:
+                        db.moneyExchange[(db.moneyExchange.length - 1) - index]
+                            [1],
+                    time:
+                        db.moneyExchange[(db.moneyExchange.length - 1) - index]
+                            [2],
+                  );
+                },
+              ))
         ],
       ),
       bottomNavigationBar: WaterDropNavBar(
