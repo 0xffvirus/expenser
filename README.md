@@ -1,16 +1,18 @@
-# expenser
+# Cash Counting 
 
-A new Flutter project.
+Count your Cash ( Physical Money ) || احسب الكاش ( النقود الورقية )
+## Description
+App Created to help you Count your cash without counting it from the beginning again and again. I made this app while learning how to deal with flutter, and i will to improve it in the near future.
 
-## Getting Started
+## Run it locally
 
-This project is a starting point for a Flutter application.
+1. Download the ZIP file or ```git clone https://github.com/0xffvirus/expenser.git```
+2. get pub from ```pubspec.yaml``` file
+3. make sure you have an <b>android emulator</b> or <b>iOS emulator</b>
+4. then hit run :)
 
-A few resources to get you started if this is your first Flutter project:
+## Version
+0.2
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Authors
+Bahaa Najjar
