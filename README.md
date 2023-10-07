@@ -12,7 +12,7 @@ App Created to help you Count your cash without counting it from the beginning a
 4. then hit run :)
 
 ## Version
-0.2
+0.21
 
 ## Authors
 Bahaa Najjar
