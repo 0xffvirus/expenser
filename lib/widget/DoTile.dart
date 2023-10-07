@@ -5,10 +5,10 @@ class ToDoTile extends StatelessWidget {
   final String taskName;
   final bool taskCompleted;
   final int taskprice;
-  Function(bool?)? onChanged;
-  Function(BuildContext)? deleteFunction;
+  final Function(bool?)? onChanged;
+  final Function(BuildContext)? deleteFunction;
 
-  ToDoTile({
+  const ToDoTile({
     super.key,
     required this.taskName,
     required this.taskCompleted,
@@ -40,7 +40,7 @@ class ToDoTile extends StatelessWidget {
             children: [
               Slidable(
                 endActionPane: ActionPane(
-                  motion: StretchMotion(),
+                  motion: const StretchMotion(),
                   children: [
                     SlidableAction(
                       onPressed: deleteFunction,
@@ -52,7 +52,7 @@ class ToDoTile extends StatelessWidget {
                 ),
                 child: Stack(children: [
                   Container(
-                    padding: EdgeInsets.all(24),
+                    padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
                       color: taskCompleted
                           ? Colors.green.withOpacity(0.25)
