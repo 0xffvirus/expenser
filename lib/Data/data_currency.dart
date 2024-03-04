@@ -15,5 +15,6 @@ Map Currencys = {
   'OMR': 'ر.ع.',
   'QAR': 'ر.ع.',
   'YER': 'ریال',
-  'EGP': 'ج.م'
+  'EGP': 'ج.م',
+  "IDR": "Rp"
 };
