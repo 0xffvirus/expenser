@@ -45,8 +45,8 @@ class _MainPageState extends State<MainPage> {
               filledIcon: FluentIcons.home_12_filled,
               outlinedIcon: FluentIcons.home_12_regular),
           BarItem(
-              filledIcon: FluentIcons.settings_16_filled,
-              outlinedIcon: FluentIcons.settings_16_regular),
+              filledIcon: FluentIcons.money_16_filled,
+              outlinedIcon: FluentIcons.money_16_regular),
         ],
         selectedIndex: selectedIndex,
         onItemSelected: (index) {

@@ -22,8 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
     db.updateData();
   }
 
-  void saveInfoExchange(double value, bool increase, String time) {
-    db.moneyExchange.add([value, increase, time]);
+  void saveInfoExchange(
+      double value, bool increase, String time, String notes) {
+    db.moneyExchange.add([value, increase, time, notes]);
   }
 
   void deleteTask(int index) {
@@ -203,18 +204,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     okLabel: "تم",
                     cancelLabel: "اغلاق",
                     barrierDismissible: false,
-                    textFields: [
-                      const DialogTextField(
+                    textFields: const [
+                      DialogTextField(
                         keyboardType: TextInputType.number,
                         hintText: '18',
-                      )
+                      ),
+                      DialogTextField(
+                          maxLength: 100,
+                          keyboardType: TextInputType.text,
+                          hintText: "ملاحظات")
                     ],
                   ).then((value) {
                     setState(() {
                       db.currentbalance -= int.parse(value![0]);
                       db.updateData();
                       saveInfoExchange(double.parse(value[0]), false,
-                          DateFormat.yMMMMd().format(DateTime.now()));
+                          DateFormat.yMMMMd().format(DateTime.now()), value[1]);
                     });
                   });
                 });
@@ -276,18 +281,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     okLabel: "تم",
                     cancelLabel: "اغلاق",
                     barrierDismissible: false,
-                    textFields: [
-                      const DialogTextField(
+                    textFields: const [
+                      DialogTextField(
                         keyboardType: TextInputType.number,
                         hintText: '18',
-                      )
+                      ),
+                      DialogTextField(
+                          maxLength: 100,
+                          keyboardType: TextInputType.text,
+                          hintText: "ملاحظات")
                     ],
                   ).then((value) {
                     setState(() {
                       db.currentbalance += int.parse(value![0]);
                       db.updateData();
                       saveInfoExchange(double.parse(value[0]), true,
-                          DateFormat.yMMMMd().format(DateTime.now()));
+                          DateFormat.yMMMMd().format(DateTime.now()), value[1]);
                     });
                   });
                 });

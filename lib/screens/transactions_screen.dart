@@ -30,6 +30,7 @@ class _TransacrionsScreenState extends State<TransacrionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           foregroundColor: Colors.black,
           centerTitle: false,
@@ -61,6 +62,7 @@ class _TransacrionsScreenState extends State<TransacrionsScreen> {
               increase: db.moneyExchange[(db.moneyExchange.length - 1) - index]
                   [1],
               time: db.moneyExchange[(db.moneyExchange.length - 1) - index][2],
+              notes: db.moneyExchange[(db.moneyExchange.length - 1) - index][3],
             );
           },
         ));
