@@ -77,11 +77,11 @@ class _SettingsScreenState extends State<SettingsScreen>
               SizedBox(
                 height: height * 0.05,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
                       "المبلغ",
                       textAlign: TextAlign.end,
@@ -105,8 +105,9 @@ class _SettingsScreenState extends State<SettingsScreen>
                         textFieldDecoration: InputDecoration(
                             hintText: "🇸🇦 SAR",
                             filled: true,
-                            fillColor: Color(0xff5d74ef).withOpacity(0.25),
-                            border: OutlineInputBorder(
+                            fillColor:
+                                const Color(0xff5d74ef).withOpacity(0.25),
+                            border: const OutlineInputBorder(
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(30),
@@ -141,7 +142,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: TextField(
                   keyboardType: TextInputType.number,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 19, color: Colors.black87, fontFamily: "Rudwa"),
                   controller: UserCurrencyInput,
                   onChanged: (value) {
@@ -150,20 +151,20 @@ class _SettingsScreenState extends State<SettingsScreen>
                     });
                   },
                   decoration: InputDecoration(
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           fontSize: 19,
                           color: Color(0xffA9A9A9),
                           fontFamily: "Rudwa"),
                       hintText: "ادخل المبلغ",
                       hintTextDirection: TextDirection.rtl,
                       filled: true,
-                      fillColor: Color(0xffe8e8e8),
+                      fillColor: const Color(0xffe8e8e8),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(18),
                           borderSide: BorderSide.none)),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(children: <Widget>[
@@ -173,7 +174,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                   endIndent: width * 0.07,
                   thickness: 1.5,
                 )),
-                Icon(
+                const Icon(
                   Icons.currency_exchange,
                   color: Color(0xffA9A9A9),
                 ),
@@ -184,14 +185,14 @@ class _SettingsScreenState extends State<SettingsScreen>
                   thickness: 1.5,
                 )),
               ]),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
                       "تم التحويل الى",
                       textAlign: TextAlign.end,
@@ -214,8 +215,9 @@ class _SettingsScreenState extends State<SettingsScreen>
                         textFieldDecoration: InputDecoration(
                             hintText: "🇸🇦 SAR",
                             filled: true,
-                            fillColor: Color(0xff5d74ef).withOpacity(0.25),
-                            border: OutlineInputBorder(
+                            fillColor:
+                                const Color(0xff5d74ef).withOpacity(0.25),
+                            border: const OutlineInputBorder(
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.only(
                                     topRight: Radius.circular(30),
@@ -248,7 +250,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: TextField(
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 19, color: Colors.black87, fontFamily: "Rudwa"),
                   readOnly: true,
                   keyboardType: TextInputType.number,
@@ -259,14 +261,14 @@ class _SettingsScreenState extends State<SettingsScreen>
                     });
                   },
                   decoration: InputDecoration(
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           fontSize: 19,
                           color: Color(0xffA9A9A9),
                           fontFamily: "Rudwa"),
                       hintText: "المبلغ المحول",
                       hintTextDirection: TextDirection.rtl,
                       filled: true,
-                      fillColor: Color(0xffe8e8e8),
+                      fillColor: const Color(0xffe8e8e8),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(18),
                           borderSide: BorderSide.none)),
