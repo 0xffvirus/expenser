@@ -4,7 +4,8 @@ Count your Cash ( Physical Money ) || احسب الكاش ( النقود الو�
 ## Description
 App Created to help you Count your cash without counting it from the beginning again and again. I made this app while learning how to deal with flutter, and i will to improve it in the near future.
 ## Screenshot
-<img src="https://i.ibb.co/2s3MyhX/deviceframes-1.png" width=600  />
+![image](https://github.com/user-attachments/assets/572f2ded-8061-41e9-a3c5-651a31ec31ef)
+
 
 ## Run it locally
 
